@@ -1,0 +1,145 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="PlaySomaFM.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ads="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    xmlns:my="clr-namespace:PlaySomaFM"
+    shell:SystemTray.IsVisible="True">
+    
+    <phone:PhoneApplicationPage.Resources>
+        <DataTemplate x:Key="normTemp">
+            <Grid Background="Transparent" 
+                  Height="120"
+                  HorizontalAlignment="Stretch"
+                  Margin="0,0,0,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Grid.RowSpan="2"
+                       Height="90" Width="90"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Source="{Binding ImageUri}"/>
+                <TextBlock Grid.Column="1" Grid.Row="0"
+                           Text="{Binding Name}"
+                           HorizontalAlignment="Stretch"
+                           Style="{StaticResource PhoneTextLargeStyle}"/>
+                <TextBlock Grid.Column="1" Grid.Row="1"
+                           Text="{Binding Description}"
+                           TextWrapping="Wrap"
+                           HorizontalAlignment="Stretch"
+                           Style="{StaticResource PhoneTextSubtleStyle}"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="selTemp">
+            <Grid Background="{StaticResource PhoneChromeBrush}" 
+                  Height="120"
+                  HorizontalAlignment="Stretch"
+                  Margin="0,0,0,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Grid.RowSpan="2"
+                       Height="90" Width="90"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Source="{Binding ImageUri}"/>
+                <TextBlock Grid.Column="1" Grid.Row="0"
+                           Text="{Binding Name}"
+                           HorizontalAlignment="Stretch"
+                           Style="{StaticResource PhoneTextLargeStyle}"/>
+                <TextBlock Grid.Column="1" Grid.Row="1"
+                           Text="{Binding Description}"
+                           TextWrapping="Wrap"
+                           HorizontalAlignment="Stretch"
+                           Style="{StaticResource PhoneTextSubtleStyle}"/>
+            </Grid>
+        </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="PageTitle" Text="soma fm"
+                   Grid.Row="0" Margin="12,0"
+                   MouseLeftButtonUp="TextBlock_MouseLeftButtonUp"
+                   Style="{StaticResource PhoneTextTitle1Style}" 
+                   FontFamily="Courier New" 
+                   Foreground="Red" 
+                   FontWeight="Bold" />
+
+        <TextBlock Text="[About]"
+                   FontWeight="Bold"
+                   Grid.Row="0"
+                   Margin="12"
+                   MouseLeftButtonUp="TextBlock_MouseLeftButtonUp"
+                   VerticalAlignment="Bottom"
+                   TextAlignment="Right"/>
+        
+        <Button Content="Nothing is playing" 
+                Grid.Row="1"
+                Click="stopBtn_Click"
+                Name="stopBtn"/>
+        
+        <ListBox Name="stationList"
+                    Grid.Row="2"
+                    Margin="0" Padding="0"
+                    HorizontalContentAlignment="Stretch"
+                    my:Helper.SelectedTemplate="{StaticResource selTemp}"
+                    ItemTemplate="{StaticResource normTemp}"
+                    SelectionChanged="stationList_SelectionChanged">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+        
+        <ads:AdControl Grid.Row="3" Height="80" Width="480" Name="ads"/>
+        
+    </Grid>
+ 
+    <!--Sample code showing usage of ApplicationBar-->
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+</phone:PhoneApplicationPage>

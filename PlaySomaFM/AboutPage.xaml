@@ -1,0 +1,77 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="PlaySomaFM.AboutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="play soma fm" 
+                       FontFamily="Courier New" 
+                       Foreground="Red" 
+                       FontWeight="Bold"
+                       Style="{StaticResource PhoneTextLargeStyle}"/>
+            <TextBlock Text="about" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <StackPanel Grid.Row="1" Margin="12">
+            <TextBlock Text="Created by:"
+                       Margin="0,12,0,0"
+                       Style="{StaticResource PhoneTextLargeStyle}"/>
+            <TextBlock Text="Martin Rauscher"
+                       Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="This app and its creator are in no way afiliated with soma fm."
+                       TextWrapping="Wrap"
+                       Style="{StaticResource PhoneTextSubtleStyle}"/>
+            <TextBlock Text="Contact:"
+                       Margin="0,12,0,0"
+                       Style="{StaticResource PhoneTextLargeStyle}"/>
+            <TextBlock Text="Twitter @Hades32"
+                       Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="email wp7@rauscheronline.de"
+                       Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="App version:"
+                       Margin="0,12,0,0"
+                       Style="{StaticResource PhoneTextLargeStyle}"/>
+            <TextBlock Style="{StaticResource PhoneTextNormalStyle}">
+                v1.2 - new in this version:
+                <LineBreak/>
+                - added 'Dub Step Beyond' and '480 Minutes'
+                <LineBreak/>
+                - added about page
+                <LineBreak/>
+                - improved stability
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+ 
+    <!--Sample code showing usage of ApplicationBar-->
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+</phone:PhoneApplicationPage>
