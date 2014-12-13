@@ -23,8 +23,6 @@ namespace PlaySomaFM
         /// <returns>The root frame of the Phone Application.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
 
-        private string mtiks_key = "15b08fa4547053018f7eb38eb";
-
         /// <summary>
         /// Constructor for the Application object.
         /// </summary>
@@ -65,7 +63,6 @@ namespace PlaySomaFM
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
-            com.mtiks.winmobile.mtiks.Instance.Start(mtiks_key, System.Reflection.Assembly.GetExecutingAssembly());
         }
 
         // Code to execute when the application is activated (brought to foreground)
@@ -74,7 +71,6 @@ namespace PlaySomaFM
         {
             if (e.IsApplicationInstancePreserved == false)
             {
-                com.mtiks.winmobile.mtiks.Instance.Start(mtiks_key, System.Reflection.Assembly.GetExecutingAssembly());
             }
         }
 
@@ -82,14 +78,12 @@ namespace PlaySomaFM
         // This code will not execute when the application is closing
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
-            com.mtiks.winmobile.mtiks.Instance.Stop();
         }
 
         // Code to execute when the application is closing (eg, user hit Back)
         // This code will not execute when the application is deactivated
         private void Application_Closing(object sender, ClosingEventArgs e)
         {
-            com.mtiks.winmobile.mtiks.Instance.Stop();
         }
 
         // Code to execute if a navigation fails
